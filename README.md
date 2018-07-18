@@ -2,6 +2,7 @@
 #livereload .tsx files work here for building react components
 git clone git@github.com:andrewvmail/ionic-app-scripts.git
 cd ionic-app-scripts
+npm install
 npm run build
 cd my_app
 npm install /absolute/pathofthis/
