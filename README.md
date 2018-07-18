@@ -1,5 +1,6 @@
 ```
-#livereload .tsx files work here for building react components
+# must be on angular 5 so ionic-angular 3.9.2+
+# livereload .tsx files work here for building react components
 git clone git@github.com:andrewvmail/ionic-app-scripts.git
 cd ionic-app-scripts
 npm install
