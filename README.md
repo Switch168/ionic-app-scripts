@@ -1,3 +1,15 @@
+```
+#livereload .tsx files work here for building react components
+git clone git@github.com:andrewvmail/ionic-app-scripts.git
+cd ionic-app-scripts
+npm run build
+cd my_app
+npm install /absolute/pathofthis/
+npm install typescript@latest 
+ionic serve
+```
+
+
 [![npm version](https://img.shields.io/npm/v/@ionic/app-scripts.svg)](https://www.npmjs.com/package/@ionic/app-scripts)
 [![Circle CI](https://circleci.com/gh/ionic-team/ionic-app-scripts.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/ionic-team/ionic-app-scripts)
 # Ionic App Scripts
