@@ -151,6 +151,15 @@ export function buildUpdate(changedFiles: ChangedFile[], context: BuildContext) 
             }
           }
         }
+
+        for (const changedFile of changedFiles) {
+          if (changedFile.ext === '.tsx') {
+            if (changedFile.event === 'change' || changedFile.event === 'add') {
+              requiresLintUpdate = true;
+              break;
+            }
+          }
+        }
         if (requiresLintUpdate) {
           // a ts file changed, so let's lint it too, however
           // this task should run as an after thought

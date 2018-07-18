@@ -90,7 +90,7 @@ export function filterTypescriptFilesForDeepLinks(fileCache: FileCache): File[] 
 export function isDeepLinkingFile(filePath: string) {
   const deepLinksDir = getStringPropertyValue(Constants.ENV_VAR_DEEPLINKS_DIR) + sep;
   const moduleSuffix = getStringPropertyValue(Constants.ENV_NG_MODULE_FILE_NAME_SUFFIX);
-  const result = extname(filePath) === '.ts' && filePath.indexOf(moduleSuffix) === -1 && filePath.indexOf(deepLinksDir) >= 0;
+  const result = (extname(filePath) === '.ts' || extname(filePath) === '.tsx') && filePath.indexOf(moduleSuffix) === -1 && filePath.indexOf(deepLinksDir) >= 0;
   return result;
 }
 

@@ -79,7 +79,7 @@ export function deepLinkingUpdate(changedFiles: ChangedFile[], context: BuildCon
 }
 
 export function deepLinkingUpdateImpl(changedFiles: ChangedFile[], context: BuildContext) {
-  const tsFiles = changedFiles.filter(changedFile => changedFile.ext === '.ts');
+  const tsFiles = changedFiles.filter(changedFile => changedFile.ext === '.ts' || changedFile.ext === '.tsx');
   if (tsFiles.length === 0) {
     return Promise.resolve();
   }

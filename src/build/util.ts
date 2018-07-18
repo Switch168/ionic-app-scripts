@@ -9,7 +9,8 @@ import { BuildContext, } from '../util/interfaces';
 
 export function scanSrcTsFiles(context: BuildContext) {
   const srcGlob = join(context.srcDir, '**', '*.ts');
-  const globs: string[] = [srcGlob];
+  const srcGlobx = join(context.srcDir, '**', '*.tsx');
+  const globs: string[] = [srcGlob].concat(srcGlobx);
   const deepLinkDir = getStringPropertyValue(Constants.ENV_VAR_DEEPLINKS_DIR);
   // these two will only not be equal in some weird cases like for building Ionic's demos with our current repository set-up
   if (deepLinkDir !== context.srcDir) {

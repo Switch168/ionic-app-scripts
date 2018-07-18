@@ -54,7 +54,7 @@ export function lintWorker(context: BuildContext, {tsConfig, tsLintConfig, typeC
 
 
 export function lintUpdate(changedFiles: ChangedFile[], context: BuildContext, typeCheck?: boolean) {
-  const changedTypescriptFiles = changedFiles.filter(changedFile => changedFile.ext === '.ts');
+  const changedTypescriptFiles = changedFiles.filter(changedFile => changedFile.ext === '.ts' || changedFile.ext === '.tsx');
   return runWorker('lint', 'lintUpdateWorker', context, {
     typeCheck,
     tsConfig: getTsConfigPath(context),

@@ -35,7 +35,7 @@ var optimizedProdLoaders = [
     ]
   },
   {
-    test: /\.ts$/,
+    test: /\.tsx?$/,
     loader: [
       {
         loader: process.env.IONIC_CACHE_LOADER
@@ -73,7 +73,7 @@ var devConfig = {
   devtool: process.env.IONIC_SOURCE_MAP_TYPE,
 
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['tsx', '.ts', '.js', '.json'],
     modules: [path.resolve('node_modules')]
   },
 
@@ -84,7 +84,7 @@ var devConfig = {
         loader: 'json-loader'
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: process.env.IONIC_WEBPACK_LOADER
       }
     ]
@@ -115,7 +115,7 @@ var prodConfig = {
   devtool: process.env.IONIC_SOURCE_MAP_TYPE,
 
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['tsx', '.ts', '.js', '.json'],
     modules: [path.resolve('node_modules')]
   },
 

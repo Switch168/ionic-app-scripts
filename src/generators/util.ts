@@ -197,7 +197,7 @@ export async function nonPageFileManipulation(context: BuildContext, name: strin
   if (hydratedRequest.type === 'pipe' || hydratedRequest.type === 'component' || hydratedRequest.type === 'directive') {
     if (!existsSync(envVar)) createCommonModule(envVar, hydratedRequest.type);
   }
-  const typescriptFilePath = changeExtension(templatesArray.filter(path => extname(path) === '.ts')[0], '');
+  const typescriptFilePath = changeExtension(templatesArray.filter(path => extname(path) === '.ts' || extname(path) === '.tsx')[0] , '');
 
 
   readFileAsync(ngModulePath).then((content) => {
@@ -233,7 +233,7 @@ export function tabsModuleManipulation(tabs: string[][], hydratedRequest: Hydrat
     let modifiedContent: string = null;
     return readFileAsync(tabsPath).then(content => {
       tabHydratedRequests.forEach((tabRequest) => {
-        const typescriptFilePath = changeExtension(tabRequest.generatedFileNames.filter(path => extname(path) === '.ts')[0], '');
+        const typescriptFilePath = changeExtension(tabRequest.generatedFileNames.filter(path => extname(path) === '.ts' || extname(path) === '.tsx')[0], '');
         const importPath = toUnixPath(relative(dirname(tabsPath), typescriptFilePath));
         modifiedContent = insertNamedImportIfNeeded(tabsPath, content, tabRequest.className, importPath);
         content = modifiedContent;

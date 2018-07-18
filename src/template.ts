@@ -69,6 +69,15 @@ function updateCorrespondingJsFile(context: BuildContext, newTemplateContent: st
       context.fileCache.set(typescriptFilePath, context.fileCache.get(typescriptFilePath));
       return true;
     }
+    if (newContent && newContent !== javascriptFile.content) {
+      javascriptFile.content = newContent;
+      // set the file again to generate a new timestamp
+      // do the same for the typescript file just to invalidate any caches, etc.
+      context.fileCache.set(javascriptFile.path, javascriptFile);
+      const typescriptFilePath = changeExtension(javascriptFile.path, '.tsx');
+      context.fileCache.set(typescriptFilePath, context.fileCache.get(typescriptFilePath));
+      return true;
+    }
   }
   return false;
 }

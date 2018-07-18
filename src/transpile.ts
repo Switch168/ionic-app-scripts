@@ -68,7 +68,7 @@ export function transpileUpdate(changedFiles: ChangedFile[], context: BuildConte
 
   const logger = new Logger('transpile update');
 
-  const changedTypescriptFiles = changedFiles.filter(changedFile => changedFile.ext === '.ts');
+  const changedTypescriptFiles = changedFiles.filter(changedFile => (changedFile.ext === '.ts' || changedFile.ext === '.tsx'));
 
   const promises: Promise<void>[] = [];
   for (const changedTypescriptFile of changedTypescriptFiles) {
@@ -426,6 +426,14 @@ export function resetSourceFiles(fileCache: FileCache) {
   fileCache.getAll().forEach(file => {
     if (path.extname(file.path) === `.ts${inMemoryFileCopySuffix}`) {
       const originalExtension = changeExtension(file.path, '.ts');
+      fileCache.set(originalExtension, {
+        path: originalExtension,
+        content: file.content
+      });
+      fileCache.getRawStore().delete(file.path);
+    }
+    if (path.extname(file.path) === `.tsx${inMemoryFileCopySuffix}`) {
+      const originalExtension = changeExtension(file.path, '.tsx');
       fileCache.set(originalExtension, {
         path: originalExtension,
         content: file.content

@@ -309,7 +309,7 @@ export function runBuildUpdate(context: BuildContext, changedFiles: ChangedFile[
     context.bundleState = BuildState.RequiresUpdate;
   }
 
-  const tsFiles = changedFiles.filter(f => f.ext === '.ts');
+  const tsFiles = changedFiles.filter(f =>  f.ext === '.tsx' || f.ext === '.ts');
   if (tsFiles.length) {
     let requiresFullBuild = false;
     for (const tsFile of tsFiles) {
@@ -337,7 +337,7 @@ export function runBuildUpdate(context: BuildContext, changedFiles: ChangedFile[
     context.sassState = BuildState.RequiresUpdate;
   }
 
-  const sassFilesNotChanges = changedFiles.filter(f => f.ext === '.ts' && f.event !== 'change');
+  const sassFilesNotChanges = changedFiles.filter(f => (f.ext === '.ts' || f.ext === '.tsx') && f.event !== 'change');
   if (sassFilesNotChanges.length) {
     // .ts file was either added or deleted, so we'll have to
     // run sass again to add/remove that .ts file's potential .scss file

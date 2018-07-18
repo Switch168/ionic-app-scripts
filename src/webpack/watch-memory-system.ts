@@ -53,7 +53,7 @@ export class WatchMemorySystem {
     this.isListening = true;
     on(EventType.WebpackFilesChanged, () => {
       this.changes = new Set<string>();
-      const filePaths = this.fileCache.getAll().filter(file => file.timestamp >= this.lastWatchEventTimestamp && file.path.startsWith(this.srcDir) && extname(file.path) === '.ts').map(file => file.path);
+      const filePaths = this.fileCache.getAll().filter(file => file.timestamp >= this.lastWatchEventTimestamp && file.path.startsWith(this.srcDir) && ( extname(file.path) === '.ts' || extname(file.path) === '.ts') ).map(file => file.path);
       Logger.debug('filePaths: ', filePaths);
       this.lastWatchEventTimestamp = Date.now();
       this.processChanges(filePaths);
